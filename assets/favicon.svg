@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LudwigTech">
+  <rect width="64" height="64" rx="14" fill="#fbe6a2"/>
+  <circle cx="22" cy="22" r="10" fill="#2f9be0"/>
+  <circle cx="42" cy="22" r="10" fill="#e2603c"/>
+  <circle cx="22" cy="42" r="10" fill="#2f9e56"/>
+  <circle cx="42" cy="42" r="10" fill="#ffc93c"/>
+</svg>
