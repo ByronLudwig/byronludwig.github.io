@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Match the Picture</title>
+  <style>
+    body { margin: 0; background: #FFF8EC; color: #2B2B2B; font-family: system-ui, sans-serif; }
+    main { max-width: 420px; margin: 0 auto; padding: 24px 16px; text-align: center; }
+    h1 { font-size: 22px; font-weight: 900; }
+    canvas { width: 100%; max-width: 360px; aspect-ratio: 1; border-radius: 24px; background: #F2E6D0; }
+    .play { display: inline-block; margin-top: 20px; padding: 14px 22px; border-radius: 16px;
+      background: #2FA84F; color: #FFFFFF; font-weight: 900; text-decoration: none; }
+    [hidden] { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="title">Can you copy my picture?</h1>
+    <canvas id="board" width="720" height="720" hidden></canvas>
+    <noscript><p>Get Match the Picture to copy this picture.</p></noscript>
+    <a class="play" href="https://play.google.com/store/apps/details?id=com.byronludwig.matchthepicture">Get it on Google Play</a>
+  </main>
+  <script type="module">
+    import { readFragment } from './picture-link.js';
+
+    const colours = await fetch('./colours.json').then((response) => response.json()).catch(() => null);
+    const picture = colours && readFragment(location.hash.slice(1), new Set(Object.keys(colours)));
+
+    if (picture) {
+      const board = document.getElementById('board');
+      const pen = board.getContext('2d');
+      const cell = board.width / picture.size;
+      [...picture.cells].forEach((legend, index) => {
+        const x = (index % picture.size + 0.5) * cell;
+        const y = (Math.floor(index / picture.size) + 0.5) * cell;
+        pen.beginPath();
+        pen.arc(x, y, cell * (legend === '.' ? 0.14 : 0.4), 0, Math.PI * 2);
+        pen.fillStyle = legend === '.' ? '#D9C7A5' : colours[legend];
+        pen.fill();
+      });
+      board.hidden = false;
+    } else {
+      document.getElementById('title').textContent = "That picture didn't come through.";
+    }
+  </script>
+</body>
+</html>
