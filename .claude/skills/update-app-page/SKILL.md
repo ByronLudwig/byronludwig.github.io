@@ -40,7 +40,8 @@ to and including its `versionName` bump; anything after the bump belongs to the 
    then look at the contact sheet. If it reports a path the cut does not track, the screenshot set
    predates that layout — leave the site's images alone and tell the user.
 6. **Edit `index.html`** — check every place below.
-7. **Commit one app per commit.** Push when the target version is live on Play, or when the user says to
+7. **Check the privacy policy** at `privacy/<app>/index.html` — see below.
+8. **Commit one app per commit.** Push when the target version is live on Play, or when the user says to
    push ahead of a release they are about to publish. Otherwise commit and hold the push.
 
 ## What to check in index.html
@@ -53,6 +54,22 @@ to and including its `versionName` bump; anything after the bump belongs to the 
 - A new screenshot needs a new `<img>`; one that dropped out of the listing needs removing, and the `shots`
   mapping in `sync_app.py` updated.
 - Hero line "No pop-up ads" must stay true for both apps.
+
+## Privacy policies
+
+The site hosts the published policies at `privacy/dot-art/` and `privacy/pretend-shop/`; Play Console
+points at them. The app repos' `privacy-policy.html` files are drafts. A draft can run ahead of Play
+(Kids Pretend Shop's ad-free draft was written before the ad-free release was cut), so the site's page
+must describe the live version, not the draft.
+
+Check the policy against the target cut whenever a release touches any of these, and move the effective
+date when the text changes:
+
+- The app name.
+- Ads: added, removed, where they appear, consent handling.
+- Products for sale.
+- Permissions: `git -C <repo> diff <previous cut> <cut> -- app/src/main/AndroidManifest.xml`.
+- What the app saves on the device, or any new Google SDK in `app/build.gradle.kts`.
 
 ## Common mistakes
 
