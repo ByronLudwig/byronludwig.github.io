@@ -38,8 +38,8 @@ APPS = {
         "release_notes": "RELEASE_NOTES.md",
         "shots": {
             "01": "screenshots/marketing/phone/01_hero.png",
-            "02": "screenshots/marketing/phone/02_orders.png",
-            "03": "screenshots/marketing/phone/03_total.png",
+            "02": "screenshots/marketing/phone/02_customers.png",
+            "03": "screenshots/marketing/phone/03_hear.png",
             "04": "screenshots/marketing/phone/04_tap_to_pay.png",
             "05": "screenshots/marketing/phone/05_more_shops.png",
             "06": "screenshots/marketing/phone/06_allergy.png",

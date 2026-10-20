@@ -49,7 +49,8 @@ to and including its `versionName` bump; anything after the bump belongs to the 
 - App name: `<meta name="description">`, the section `<h2>`, the Google Play badge `alt`.
 - `.blurb` and `.features` against the store copy at the cut. A new feature can make old copy false
   (Dot Art's "no streaks" after the daily streak shipped).
-- Keep `.features` at an even count; the grid leaves an orphan card on an odd one.
+- Keep `.features` at six cards. The grid runs three columns on desktop and two on a tablet, so any
+  count that is not a multiple of six leaves an orphan card at one of those widths.
 - Each screenshot `alt` describes the new image — look at it, don't trust the old text.
 - A new screenshot needs a new `<img>`; one that dropped out of the listing needs removing, and the `shots`
   mapping in `sync_app.py` updated.
