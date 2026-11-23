@@ -85,5 +85,7 @@ date when the text changes:
 
 ## Pushing
 
-The remote is HTTPS and this shell has no GitHub credentials, so `git push` fails with
-`could not read Username`. Ask the user to push (IDE or their terminal).
+`origin` is `git@github-site:ByronLudwig/byronludwig.github.io.git`. The `github-site` host in `~/.ssh/config`
+uses `~/.ssh/github_site_deploy`, a deploy key with write access to this repo only, so `git push` works from
+this shell. If it answers `Permission denied (publickey)`, the deploy key was removed from the repo's
+Settings → Deploy keys on GitHub.
